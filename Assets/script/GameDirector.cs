@@ -23,11 +23,10 @@ public class GameDirector : MonoBehaviour
     //1個目
     public void Click1()
     {
-        if (count < 150)
+        if (count < 110)
         {
             count=count+10;
         }
-        Hyouji();
         UpdateLabel();
     }
 
@@ -37,15 +36,10 @@ public class GameDirector : MonoBehaviour
         if (count > 10)
         {
             count=count-10;
-        }
-        Hyouji();
+        }       
         UpdateLabel();
     }
-    //ボタンを押すたびに数値がコンソールに表示される
-    void Hyouji()
-    {
-       Debug.Log(count); 
-    }
+  
 
     void UpdateLabel()
     {
