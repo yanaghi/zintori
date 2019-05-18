@@ -7,7 +7,10 @@ public class GameDirector : MonoBehaviour
 {
     public Text label;
     public int count;
-    //取得用関数,これって何だっけ
+
+  
+
+    //取得用関数
     public int GetCount()
     {
         return count;
@@ -18,10 +21,8 @@ public class GameDirector : MonoBehaviour
     {
         count = 10;
         UpdateLabel();
-        Debug.Log(count);
     }
-    //1個目
-    public void Click1()
+    public void ClickUp()
     {
         if (count < 110)
         {
@@ -31,7 +32,7 @@ public class GameDirector : MonoBehaviour
     }
 
     //数字を下げる
-    public void Click2()
+    public void ClickDown()
     {
         if (count > 10)
         {
