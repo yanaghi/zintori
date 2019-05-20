@@ -24,6 +24,14 @@ public class SumPoint : MonoBehaviour
     public GameDirector director3;
     public GameDirector director4;
     public GameDirector director5;
+
+    public static string selectedLabel1;
+    public static string selectedLabel2;
+    public static string selectedLabel3;
+    public static string selectedLabel4;
+    public static string selectedLabel5;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +53,7 @@ public class SumPoint : MonoBehaviour
       
             if (sum == 150)
             {
-                SceneManager.LoadScene("Resultscene");    //Resultsceneというシーンに移る//
+                SceneManager.LoadScene("Battlescene");    //Battlesceneに移る//
             }
             else
             {
@@ -53,39 +61,57 @@ public class SumPoint : MonoBehaviour
             }
             //選択されたトグルのテキストを読み取ってそれをコンソールに表示//
             //1個目//
-            string selectedLabel1 = toggleGroup1.ActiveToggles()
+            selectedLabel1 = toggleGroup1.ActiveToggles()
             .First().GetComponentsInChildren<Text>()
             .First(t => t.name == "Label").text;
-
-            Debug.Log("selected " + selectedLabel1);
+        
             //2個目//
-            string selectedLabel2 = toggleGroup2.ActiveToggles()
+            selectedLabel2 = toggleGroup2.ActiveToggles()
             .First().GetComponentsInChildren<Text>()
             .First(t => t.name == "Label").text;
 
-            Debug.Log("selected " + selectedLabel2);
         　　//3個目//
-            string selectedLabel3 = toggleGroup3.ActiveToggles()
+            selectedLabel3 = toggleGroup3.ActiveToggles()
                 .First().GetComponentsInChildren<Text>()
                 .First(t => t.name == "Label").text;
-
-            Debug.Log("selected " + selectedLabel3);
+        
         　　//4個目//
-            string selectedLabel4 = toggleGroup4.ActiveToggles()
+            selectedLabel4 = toggleGroup4.ActiveToggles()
                 .First().GetComponentsInChildren<Text>()
                 .First(t => t.name == "Label").text;
 
-            Debug.Log("selected " + selectedLabel4);
         　　//5個目//
-            string selectedLabel5 = toggleGroup5.ActiveToggles()
+            selectedLabel5 = toggleGroup5.ActiveToggles()
                 .First().GetComponentsInChildren<Text>()
                 .First(t => t.name == "Label").text;
-
-            Debug.Log("selected " + selectedLabel5);
 
 
     }
-
-
+    //プレイヤーの手を取得する関数//
+    public static string Getmyhand(int n)
+    {
+        
+        if (n == 1)
+        {
+            return selectedLabel1;
+        }
+        else if (n == 2)
+        {
+            return selectedLabel2;
+        }
+        else if (n == 3)
+        {
+            return selectedLabel3;
+        }
+        else if (n == 4)
+        {
+            return selectedLabel4;
+        }
+        else
+        {
+            return selectedLabel5;
+        }
+        
+    }
 
 }
