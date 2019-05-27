@@ -19,12 +19,6 @@ public class SumPoint : MonoBehaviour
     public Text sumP;
     public Text restP;
 
-    public GameDirector director1;
-    public GameDirector director2;
-    public GameDirector director3;
-    public GameDirector director4;
-    public GameDirector director5;
-
     public static string selectedLabel1;
     public static string selectedLabel2;
     public static string selectedLabel3;
@@ -41,10 +35,10 @@ public class SumPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sum = director1.GetCount() + director2.GetCount() + director3.GetCount() + director4.GetCount() + director5.GetCount();
+        sum = GameDirector.GetCount(1) + GameDirector.GetCount(2) + GameDirector.GetCount(3) + GameDirector.GetCount(4) + GameDirector.GetCount(5);
         sumP.text ="現在"+ sum+"p";
 
-        rest = 150 - (director1.GetCount() + director2.GetCount() + director3.GetCount() + director4.GetCount() + director5.GetCount());
+        rest = 150 - (GameDirector.GetCount(1) + GameDirector.GetCount(2) + GameDirector.GetCount(3) + GameDirector.GetCount(4) + GameDirector.GetCount(5));
         restP.text="残り"+rest+"p";
     }
 
@@ -59,7 +53,7 @@ public class SumPoint : MonoBehaviour
             {
                 Debug.Log("not 150");
             }
-            //選択されたトグルのテキストを読み取ってそれをコンソールに表示//
+            //選択されたトグルのテキストを読み取る//
             //1個目//
             selectedLabel1 = toggleGroup1.ActiveToggles()
             .First().GetComponentsInChildren<Text>()

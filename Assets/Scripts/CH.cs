@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class CH : MonoBehaviour
 {
-    public Text cpuhand1;
-    public Text cpuhand2;
-    public Text cpuhand3;
-    public Text cpuhand4;
-    public Text cpuhand5;
+    public  Text cpuhand1;
+    public  Text cpuhand2;
+    public  Text cpuhand3;
+    public  Text cpuhand4;
+    public  Text cpuhand5;
 
-    string[] hand = new string[3] { "Gu", "Choki", "Pa" };
+    public string[] hand = new string[3] { "Goo", "Choki", "Pa" };
 
 
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class CH : MonoBehaviour
     {
        
     }
-
+    //cpuの手を取得する関数//
     public string Getcpuhand(int n)
     {
         if (n == 1)

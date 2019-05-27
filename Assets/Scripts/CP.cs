@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//サンプルだから気にしないで//
+
 public class CP : MonoBehaviour
 {
     public Text cpuPower1;
@@ -43,5 +43,10 @@ public class CP : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int Getcp(int n)
+    {
+        return cp[n];
     }
 }
