@@ -51,11 +51,11 @@ public class next : MonoBehaviour
     public static int[] ResultPoint = new int[5] { ResultPoint1, ResultPoint2, ResultPoint3, ResultPoint4, ResultPoint5 };
 
     //勝負に勝った方の手を記録する配列//
-    static string Winnerhand1;
-    static string Winnerhand2;
-    static string Winnerhand3;
-    static string Winnerhand4;
-    static string Winnerhand5;
+    static string Winnerhand1="";
+    static string Winnerhand2="";
+    static string Winnerhand3="";
+    static string Winnerhand4="";
+    static string Winnerhand5="";
 
     public static string[] Winnerhand = new string[5] { Winnerhand1, Winnerhand2, Winnerhand3, Winnerhand4, Winnerhand5 };
 
@@ -75,11 +75,11 @@ public class next : MonoBehaviour
         string chand4 = ch.Getcpuhand(4);
         string chand5 = ch.Getcpuhand(5);
         //プレイヤーのポイント//
-        int PP1 = GameDirector.GetCount(1);
-        int PP2 = GameDirector.GetCount(2);
-        int PP3 = GameDirector.GetCount(3);
-        int PP4 = GameDirector.GetCount(4);
-        int PP5 = GameDirector.GetCount(5);
+        int PP1 = SumPoint.count1;
+        int PP2 = SumPoint.count2;
+        int PP3 = SumPoint.count3;
+        int PP4 = SumPoint.count4;
+        int PP5 = SumPoint.count5;
         //CPUのポイント//
         int CP1 = cp.Getcp(0);
         int CP2 = cp.Getcp(1);
@@ -210,6 +210,6 @@ public class next : MonoBehaviour
 
     public void NextButton()
     {
-        SceneManager.LoadScene("Resultscene");
+        SceneManager.LoadScene("1stResult");
     }
 }

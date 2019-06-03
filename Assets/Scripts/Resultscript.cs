@@ -7,23 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class Resultscript : MonoBehaviour
 {
-    public TextMeshProUGUI battleresult1;
-    public TextMeshProUGUI battleresult2;
-    public TextMeshProUGUI battleresult3;
-    public TextMeshProUGUI battleresult4;
-    public TextMeshProUGUI battleresult5;
+    public TextMeshProUGUI battleresult1, battleresult2, battleresult3, battleresult4, battleresult5;
 
-    public TextMeshProUGUI resultpoint1;
-    public TextMeshProUGUI resultpoint2;
-    public TextMeshProUGUI resultpoint3;
-    public TextMeshProUGUI resultpoint4;
-    public TextMeshProUGUI resultpoint5;
+    public TextMeshProUGUI resultpoint1, resultpoint2, resultpoint3, resultpoint4, resultpoint5;
 
-    public TextMeshProUGUI winnerhand1;
-    public TextMeshProUGUI winnerhand2;
-    public TextMeshProUGUI winnerhand3;
-    public TextMeshProUGUI winnerhand4;
-    public TextMeshProUGUI winnerhand5;
+    public TextMeshProUGUI winnerhand1, winnerhand2, winnerhand3, winnerhand4, winnerhand5;
 
     public TextMeshProUGUI PlayerGooPoint;
     public TextMeshProUGUI PlayerChokiPoint;
@@ -31,6 +19,13 @@ public class Resultscript : MonoBehaviour
     public TextMeshProUGUI CPUGooPoint;
     public TextMeshProUGUI CPUChokiPoint;
     public TextMeshProUGUI CPUPaPoint;
+
+    public static int pGooPoint;
+    public static int pChokiPoint;
+    public static int pPaPoint;
+    public static int cGooPoint;
+    public static int cChokiPoint;
+    public static int cPaPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -119,14 +114,10 @@ public class Resultscript : MonoBehaviour
 
         //２回戦用にそれぞれのポイントをじゃんけんの手ごとに集計//
 
-        int pGooPoint=0;
-        int pChokiPoint=0;
-        int pPaPoint=0;
-        int cGooPoint=0;
-        int cChokiPoint=0;
-        int cPaPoint=0;
             for(int n = 0; n <= 4; n++)
         {
+            
+
             if (battlestatus[n] == 1)   //勝ったとき,手によってポイントを振り分ける//
             {
                 if (winnerhand[n] == "Goo")
@@ -166,12 +157,11 @@ public class Resultscript : MonoBehaviour
             CPUPaPoint.text = cPaPoint + "p";
         }
 
-
     }
 
     public void GoNext()
     {
-        SceneManager.LoadScene("2ndBattleScene");
+        SceneManager.LoadScene("2ndSetting");
     }
 
     // Update is called once per frame

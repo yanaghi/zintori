@@ -6,15 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/janken.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/1stSetting.unity
+    guid: 4fa0f78bc60a38646821213f66adecba
   - enabled: 1
-    path: Assets/Scenes/Battlescene.unity
+    path: Assets/Scenes/ShowHands.unity
     guid: 8f766fb2b302b63488368ae4dcd5ecc9
   - enabled: 1
-    path: Assets/Scenes/Resultscene.unity
+    path: Assets/Scenes/1stResult.unity
     guid: 526e92d62e7f636449af299af910ecf0
   - enabled: 1
-    path: Assets/Scenes/2ndBattleScene.unity
+    path: Assets/Scenes/2ndSetting.unity
     guid: 99edf815a9a8c744fb94452f7a6dfbce
+  - enabled: 1
+    path: Assets/Scenes/2ndResult.unity
+    guid: 96dce307acb504e41ac84d572b4dc23d
+  - enabled: 1
+    path: Assets/Scenes/FinalResult.unity
+    guid: 61954d82c87c18f47bea110ccd475190
+  - enabled: 1
+    path: Assets/Scenes/END.unity
+    guid: f192f1caaa3e69e44a004e4488af814b
   m_configObjects: {}
