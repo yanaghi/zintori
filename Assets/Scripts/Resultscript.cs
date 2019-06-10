@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class Resultscript : MonoBehaviour
 {
-    public TextMeshProUGUI battleresult1, battleresult2, battleresult3, battleresult4, battleresult5;
+    public AudioSource AS;
+    public AudioClip select3;
 
-    public TextMeshProUGUI resultpoint1, resultpoint2, resultpoint3, resultpoint4, resultpoint5;
+    public Image[] panel = new Image[5];
+    Sprite[] colorpanel = SumPoint.color_panel;
+    int[] colornum = SumPoint.colornum;
 
-    public TextMeshProUGUI winnerhand1, winnerhand2, winnerhand3, winnerhand4, winnerhand5;
+    public Text battleresult1, battleresult2, battleresult3, battleresult4, battleresult5;
+    public Text resultpoint1, resultpoint2, resultpoint3, resultpoint4, resultpoint5;
+    public Text winnerhand1, winnerhand2, winnerhand3, winnerhand4, winnerhand5;
 
-    public TextMeshProUGUI PlayerGooPoint;
-    public TextMeshProUGUI PlayerChokiPoint;
-    public TextMeshProUGUI PlayerPaPoint;
-    public TextMeshProUGUI CPUGooPoint;
-    public TextMeshProUGUI CPUChokiPoint;
-    public TextMeshProUGUI CPUPaPoint;
+    public Text PlayerGooPoint;
+    public Text PlayerChokiPoint;
+    public Text PlayerPaPoint;
+    public Text CPUGooPoint;
+    public Text CPUChokiPoint;
+    public Text CPUPaPoint;
 
     public static int pGooPoint;
     public static int pChokiPoint;
@@ -33,6 +37,8 @@ public class Resultscript : MonoBehaviour
         int[] resultpoint = next.ResultPoint;
         int[] battlestatus = next.BattleStatus;
         string[] winnerhand = next.Winnerhand;
+        Text[] battleresult = new Text[5] { battleresult1, battleresult2, battleresult3, battleresult4, battleresult5 };
+        Text[] handtext = new Text[5] { winnerhand1, winnerhand2, winnerhand3, winnerhand4, winnerhand5 };
 
         resultpoint1.text = resultpoint[0] + "p";
         resultpoint2.text = resultpoint[1] + "p";
@@ -45,79 +51,56 @@ public class Resultscript : MonoBehaviour
         winnerhand3.text = winnerhand[2];
         winnerhand4.text = winnerhand[3];
         winnerhand5.text = winnerhand[4];
-        //なぜかfor文でうまくいかなかったからそれぞれやる//
-        //１回目//
-        if (battlestatus[0] == 1)
-            {
-                battleresult1.text = "WIN!!";
-            }
-            else if (battlestatus[0] == 2)
-            {
-                battleresult1.text = "LOSE..";
-            }
-            else if (battlestatus[0] == 3)
-            {
-                battleresult1.text = "DRAW";
-            }
-        //２回目//
-            if (battlestatus[1] == 1)
-            {
-                battleresult2.text = "WIN!!";
-            }
-            else if (battlestatus[1] == 2)
-            {
-                battleresult2.text = "LOSE..";
-            }
-            else if (battlestatus[1] == 3)
-            {
-                battleresult2.text = "DRAW";
-            }
-            //３回目//
-            if (battlestatus[2] == 1)
-            {
-                battleresult3.text = "WIN!!";
-            }
-            else if (battlestatus[2] == 2)
-            {
-                battleresult3.text = "LOSE..";
-            }
-            else if (battlestatus[2] == 3)
-            {
-                battleresult3.text = "DRAW";
+
+        string[] result = new string[5];
+        Color[] status = new Color[5];
+
+        for (int n = 0; n <= 4; n++)
+        {
+            switch (battlestatus[n])
+            { 
+                case 1:
+                    result[n] = "WIN!!";
+                    status[n] = Color.red;
+                    break;
+                case 2:
+                    result[n] = "LOSE...";
+                    status[n] = Color.blue;
+                    break;
+                case 3:
+                    result[n] = "DRAW";
+                    status[n] = Color.gray;
+                    break;
             }
 
-            if (battlestatus[3] == 1)
+            switch (winnerhand[n])
             {
-                battleresult4.text = "WIN!!";
+                case "Goo":
+                    handtext[n].color = Color.red;
+                    break;
+                case "Choki":
+                    handtext[n].color = Color.green;
+                    break;
+                case "Pa":
+                    handtext[n].color = Color.blue;
+                    break;
             }
-            else if (battlestatus[3] == 2)
-            {
-                battleresult4.text = "LOSE..";
-            }
-            else if (battlestatus[3] == 3)
-            {
-                battleresult4.text = "DRAW";
-            }
-
-            if (battlestatus[4] == 1)
-            {
-                battleresult5.text = "WIN!!";
-            }
-            else if (battlestatus[4] == 2)
-            {
-                battleresult5.text = "LOSE..";
-            }
-            else if (battlestatus[4] == 3)
-            {
-                battleresult5.text = "DRAW";
-            }
+        }
+        battleresult1.text = result[0];
+        battleresult2.text = result[1];
+        battleresult3.text = result[2];
+        battleresult4.text = result[3];
+        battleresult5.text = result[4];
+        battleresult1.color = status[0];
+        battleresult2.color = status[1];
+        battleresult3.color = status[2];
+        battleresult4.color = status[3];
+        battleresult5.color = status[4];
 
         //２回戦用にそれぞれのポイントをじゃんけんの手ごとに集計//
 
-            for(int n = 0; n <= 4; n++)
-        {
-            
-
+        for (int n = 0; n <= 4; n++)
+        {           
             if (battlestatus[n] == 1)   //勝ったとき,手によってポイントを振り分ける//
             {
                 if (winnerhand[n] == "Goo")
@@ -157,11 +140,19 @@ public class Resultscript : MonoBehaviour
             CPUPaPoint.text = cPaPoint + "p";
         }
 
+        for(int n = 0; n < 4; n++)
+        {
+            panel[n].sprite = colorpanel[n];
+        }
+
     }
 
     public void GoNext()
     {
-        SceneManager.LoadScene("2ndSetting");
+        DontDestroyOnLoad(this);
+        Destroy(this.gameObject, 0.5f);
+        AS.PlayOneShot(select3);
+        FadeManager.Instance.LoadScene("2ndSetting", 1.0f); ;
     }
 
     // Update is called once per frame

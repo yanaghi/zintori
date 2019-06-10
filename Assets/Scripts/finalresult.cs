@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class finalresult : MonoBehaviour
 {
-    int playerscore = Victorycounter.victorycounter;
-    int cpuscore = Victorycounter.defeatcounter;
+    int playerscore = Secondresult.victorycount;
+    int cpuscore = Secondresult.defeatcount;
 
-    public TextMeshProUGUI Result;
+    public Text Result;
 
     // Start is called before the first frame update
     void Start()
@@ -16,20 +18,17 @@ public class finalresult : MonoBehaviour
         if (playerscore > cpuscore)
         {
             Result.text = "WIN!!";
+            Result.color = Color.red;
         }
         else if (playerscore < cpuscore)
         {
             Result.text = "LOSE...";
+            Result.color = Color.blue;
         }
         else if (playerscore == cpuscore)
         {
             Result.text = "DRAW...";
+            Result.color = Color.gray;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

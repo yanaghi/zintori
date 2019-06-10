@@ -3,35 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using TMPro;
-using
-    UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class Secondresult : MonoBehaviour
 {
-    public TextMeshProUGUI Phand1;
-    public TextMeshProUGUI Phand2;
-    public TextMeshProUGUI Phand3;
+    public AudioSource AS;
+    public AudioClip select2,select3;
 
-    public TextMeshProUGUI Chand1;
-    public TextMeshProUGUI Chand2;
-    public TextMeshProUGUI Chand3;
+    public Image[] panel = new Image[3];
+    Sprite[] irodori = secondBattle.irodori;
+    int[] colornum = secondBattle.colornum;
 
-    public TextMeshProUGUI Pbeforepoint1;
-    public TextMeshProUGUI Pbeforepoint2;
-    public TextMeshProUGUI Pbeforepoint3;
+    public Text Phand1;
+    public Text Phand2;
+    public Text Phand3;
 
-    public TextMeshProUGUI Cbeforepoint1;
-    public TextMeshProUGUI Cbeforepoint2;
-    public TextMeshProUGUI Cbeforepoint3;
+    public Text Chand1;
+    public Text Chand2;
+    public Text Chand3;
 
-    public TextMeshProUGUI Pafterpoint1;
-    public TextMeshProUGUI Pafterpoint2;
-    public TextMeshProUGUI Pafterpoint3;
+    public Text Pbeforepoint1;
+    public Text Pbeforepoint2;
+    public Text Pbeforepoint3;
 
-    public TextMeshProUGUI Cafterpoint1;
-    public TextMeshProUGUI Cafterpoint2;
-    public TextMeshProUGUI Cafterpoint3;
+    public Text Cbeforepoint1;
+    public Text Cbeforepoint2;
+    public Text Cbeforepoint3;
+
+    public Text Pafterpoint1;
+    public Text Pafterpoint2;
+    public Text Pafterpoint3;
+
+    public Text Cafterpoint1;
+    public Text Cafterpoint2;
+    public Text Cafterpoint3;
+
+    public GameObject Pafterp1;
+    public GameObject result1, result2, result3;
+
+    public Text Result1, Result2, Result3, Resultsum;
 
     //プレイヤーの選んだ手とポイント//
     int secondpp1 = secondBattle.power1;
@@ -45,7 +55,6 @@ public class Secondresult : MonoBehaviour
     int cpuChoki = secondBattle.c_ChokiPoint;
     int cpuPa = secondBattle.c_PaPoint;
 
-    //ここは後で変更する//
     int secondcp1;
     int secondcp2;
     int secondcp3;
@@ -66,11 +75,23 @@ public class Secondresult : MonoBehaviour
     int[] SPP = new int[3];
     int[] SCP = new int[3];
 
+    public static int victorycount = 0;
+    public static int defeatcount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        string[] hand = new string[3] { "Goo", "Choki", "Pa" };
+        Text[] Phand = new Text[3] { Phand1, Phand2, Phand3 };
+        Text[] Chand = new Text[3] { Chand1, Chand2, Chand3 };
+        Text[] Pafterpoint = new Text[3] { Pafterpoint1, Pafterpoint2, Pafterpoint3 };
+        Text[] Cafterpoint = new Text[3] { Cafterpoint1, Cafterpoint2, Cafterpoint3 };
 
+        string[] hand = new string[3] { "Goo", "Choki", "Pa" };
+        result1.SetActive(false);
+        result2.SetActive(false);
+        result3.SetActive(false);
+
+        //CPUのポイント割り振りを決める//
         if ((cpuGoo > 0) && (cpuChoki > 0) && (cpuPa > 0))          //グーチョキパー全部ポイントあり//
         {
             int[] point = new int[3] { cpuGoo, cpuChoki, cpuPa };
@@ -313,7 +334,7 @@ public class Secondresult : MonoBehaviour
             secondch2 = hand7[1];
             secondch3 = hand7[2];
         }
-        else        //何もなし//
+        else if((cpuGoo==0)&&(cpuChoki==0)&&(cpuPa==0))       //何もなし//
         {
             secondcp1 = 0;
             secondcp2 = 0;
@@ -331,20 +352,41 @@ public class Secondresult : MonoBehaviour
         Secondph[1] = secondph2;
         Secondph[2] = secondph3;
 
-        Secondcp[0] = secondcp1;    //０って返ってくる//
+        Secondcp[0] = secondcp1;    
         Secondcp[1] = secondcp2;
         Secondcp[2] = secondcp3;
 
-        Secondch[0] = secondch1;    //NULLって返ってくる//
+        Secondch[0] = secondch1;    
         Secondch[1] = secondch2;
         Secondch[2] = secondch3;
 
         for (int n=0; n<=2; n++)
         {
-            Debug.Log(Secondph[n]);
-            Debug.Log(Secondpp[n]);
-            Debug.Log(Secondch[n]);
-            Debug.Log(Secondcp[n]);
+            switch (Secondph[n])
+            {
+                case "Goo":
+                    Phand[n].color = Color.red;
+                    break;
+                case "Choki":
+                    Phand[n].color = Color.green;
+                    break;
+                case "Pa":
+                    Phand[n].color = Color.blue;
+                    break;                    
+            }
+            switch (Secondch[n])
+            {
+                case "Goo":
+                    Chand[n].color = Color.red;
+                    break;
+                case "Choki":
+                    Chand[n].color = Color.green;
+                    break;
+                case "Pa":
+                    Chand[n].color = Color.blue;
+                    break;
+            }
+
 
             switch (Secondph[n])
             {
@@ -409,24 +451,119 @@ public class Secondresult : MonoBehaviour
                     }
                     break;
             }
+
+            switch (colornum[n])
+            {
+                case 0:
+                    if (Secondph[n] == "Goo")
+                    {
+                        SPP[n] = SPP[n] * 2;
+                    }
+                    if (Secondch[n] == "Goo")
+                    {
+                        SCP[n] = SCP[n] * 2;
+                    }
+                    break;
+                case 1:
+                    if (Secondph[n] == "Choki")
+                    {
+                        SPP[n] = SPP[n] * 2;
+                    }
+                    if (Secondch[n] == "Choki")
+                    {
+                        SCP[n] = SCP[n] * 2;
+                    }
+                    break;
+                case 2:
+                    if (Secondph[n] == "Pa")
+                    {
+                        SPP[n] = SPP[n] * 2;
+                    }
+                    if (Secondch[n] == "Pa")
+                    {
+                        SCP[n] = SCP[n] * 2;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
             if (SPP[n] > SCP[n])
             {
+                Pafterpoint[n].color = Color.yellow;
                 BattleResult[n] = 1;
+                victorycount++;
             }
             else if (SPP[n] < SCP[n])
             {
+                Cafterpoint[n].color = Color.yellow;
                 BattleResult[n] = 2;
+                defeatcount++;
             }
             else if (SPP[n] == SCP[n])
             {
                 BattleResult[n] = 3;
             }
-        }     
+        }
+
+        switch (BattleResult[0])
+        {
+            case 1:
+                Result1.text = "WIN!!";
+                Result1.color = Color.red;
+                break;
+            case 2:
+                Result1.text = "LOSE...";
+                Result1.color = Color.blue;
+                break;
+            case 3:
+                Result1.text = "DRAW";
+                Result1.color = Color.gray;
+                break;
+        }
+        switch (BattleResult[1])
+        {
+            case 1:
+                Result2.text = "WIN!!";
+                Result2.color = Color.red;
+                break;
+            case 2:
+                Result2.text = "LOSE...";
+                Result2.color = Color.blue;
+                break;
+            case 3:
+                Result2.text = "DRAW";
+                Result2.color = Color.gray;
+                break;
+        }
+        switch (BattleResult[2])
+        {
+            case 1:
+                Result3.text = "WIN!!";
+                Result3.color = Color.red;
+                break;
+            case 2:
+                Result3.text = "LOSE...";
+                Result3.color = Color.blue;
+                break;
+            case 3:
+                Result3.text = "DRAW";
+                Result3.color = Color.gray;
+                break;
+        }
+
+        for(int n = 0; n < 2; n++)
+        {
+            panel[n].sprite = irodori[n];
+        }
     }
 
     public void Go_nextscene()
     {
-        SceneManager.LoadScene("FinalResult");
+        DontDestroyOnLoad(this);
+        Destroy(this.gameObject, 0.5f);
+        FadeManager.Instance.LoadScene("END", 1.0f); ;
+        AS.PlayOneShot(select3);
     }
 
     // Update is called once per frame
@@ -455,7 +592,25 @@ public class Secondresult : MonoBehaviour
         Cafterpoint1.text = SCP[0] + "p";
         Cafterpoint2.text = SCP[1] + "p";
         Cafterpoint3.text = SCP[2] + "p";
+
+        Resultsum.text = victorycount + " - " + defeatcount;
     }
 
+   /* public void Showresult()
+    {
+        AS.PlayOneShot(select2);
 
+        if (result1.activeSelf==false)
+        {
+            result1.SetActive(true);
+            result2.SetActive(true);
+            result3.SetActive(true);
+        }
+        else if(result1.activeSelf==true)
+        {
+            result1.SetActive(false);
+            result2.SetActive(false);
+            result3.SetActive(false);
+        }
+    }*/
 }

@@ -7,6 +7,14 @@ using System.Linq;
 
 public class SumPoint : MonoBehaviour
 {
+    //特殊マス用のsprite,UnityのUI上でいろいろ指定//
+    public GameObject panel1, panel2, panel3, panel4, panel5;   
+    public Sprite[] colorpanel = new Sprite[5];
+    public static Sprite[] color_panel = new Sprite[5];
+    public Image[] panelcolor = new Image[5];
+    //０＝赤パネル、１＝緑パネル、２＝青パネル、３・４＝普通パネル//
+    public static int[] colornum = new int[5];
+
     public Text label1,label2,label3,label4,label5;
  
     public static int count1,count2,count3,count4,count5;
@@ -29,6 +37,14 @@ public class SumPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        for(int n = 0; n < 4; n++)
+        {
+            colornum[n] = Random.Range(0, 5);
+            panelcolor[n].sprite = colorpanel[colornum[n]];
+            color_panel[n] = panelcolor[n].sprite;
+        }
+
         count1 = 10;
         count2 = 10;
         count3 = 10;
@@ -42,16 +58,17 @@ public class SumPoint : MonoBehaviour
     void Update()
     {
         sum = count1 + count2 + count3 + count4 + count5;
-        SumP.text ="現在"+ sum+"p";
+        SumP.text =sum+"　p";
 
         rest = 150 - (count1 + count2 + count3 + count4 + count5);
-        RestP.text="残り"+rest+"p";
+        RestP.text=rest+"　p";
 
         checkedT1 = toggleGroup1.AnyTogglesOn();
         checkedT2 = toggleGroup2.AnyTogglesOn();
         checkedT3 = toggleGroup3.AnyTogglesOn();
         checkedT4 = toggleGroup4.AnyTogglesOn();
         checkedT5 = toggleGroup5.AnyTogglesOn();
+
     }
     
     //STARTボタンを押したときの処理//
@@ -60,10 +77,10 @@ public class SumPoint : MonoBehaviour
             if ((sum == 150)&&(checkedT1==true)&&(checkedT2==true)&&(checkedT3==true)&&(checkedT4==true)&&(checkedT5==true))
             {
                 DontDestroyOnLoad(this);
+            Destroy(this.gameObject, 0.5f);
                 AS.PlayOneShot(select3);
                 SceneManager.LoadScene("ShowHands");    //シーン移動//
-                Invoke("Destroy", 2);
-            }
+        }
             else
             {
             AS.PlayOneShot(beep);
@@ -233,11 +250,11 @@ public class SumPoint : MonoBehaviour
 
     void UpdateLabel()
     {
-        label1.text = count1 + "p";
-        label2.text = count2 + "p";
-        label3.text = count3 + "p";
-        label4.text = count4 + "p";
-        label5.text = count5 + "p";
+        label1.text = count1 + "";
+        label2.text = count2 + "";
+        label3.text = count3 + "";
+        label4.text = count4 + "";
+        label5.text = count5 + "";
 
     }
 
@@ -274,10 +291,4 @@ public class SumPoint : MonoBehaviour
     {
         AS.PlayOneShot(select2);
     }
-
-    public void Destroy()
-    {
-        DestroyImmediate(this);
-    }
-
 }
