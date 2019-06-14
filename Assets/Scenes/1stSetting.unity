@@ -253,7 +253,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.692
-  m_Pitch: 2
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -532,11 +532,11 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a84815c8e0aeac0449a8ac023b13b3db, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 114c724f7d40201479dcc6837f715883, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1730,6 +1730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeManager
       objectReference: {fileID: 0}
+    - target: {fileID: 130190, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 474238, guid: fd9d58dbfb8f846f58b62a48334a0058, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2115,27 +2119,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3176338688545623287, guid: fc55f4dab990ddf449372b7cffc94d23,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 330234618}
     - target: {fileID: 3176338687517373617, guid: fc55f4dab990ddf449372b7cffc94d23,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 330234618}
+    - target: {fileID: 3176338688545623287, guid: fc55f4dab990ddf449372b7cffc94d23,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 330234618}
+    - target: {fileID: 3176338688339455086, guid: fc55f4dab990ddf449372b7cffc94d23,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000011444092
+      objectReference: {fileID: 0}
     - target: {fileID: 3176338687623688094, guid: fc55f4dab990ddf449372b7cffc94d23,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 330234618}
-    - target: {fileID: 3176338688276030807, guid: fc55f4dab990ddf449372b7cffc94d23,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9b76b22403f49f04a9df4c40cbabe4c2,
-        type: 3}
     - target: {fileID: 3176338688452353119, guid: fc55f4dab990ddf449372b7cffc94d23,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2146,17 +2149,18 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 330234618}
+    - target: {fileID: 3176338688276030807, guid: fc55f4dab990ddf449372b7cffc94d23,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b76b22403f49f04a9df4c40cbabe4c2,
+        type: 3}
     - target: {fileID: 3176338689037265217, guid: fc55f4dab990ddf449372b7cffc94d23,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3f9aa18468768b44db920ac4ac13b2a9,
         type: 3}
-    - target: {fileID: 3176338688339455086, guid: fc55f4dab990ddf449372b7cffc94d23,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000011444092
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc55f4dab990ddf449372b7cffc94d23, type: 3}
 --- !u!1001 &4121576240028936604

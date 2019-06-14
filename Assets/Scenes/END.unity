@@ -432,6 +432,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Result: {fileID: 109167626}
+  AS: {fileID: 528720033}
+  win: {fileID: 8300000, guid: 2d4eb37b7f5b96741964645e2ef6d128, type: 3}
+  lose: {fileID: 8300000, guid: af979b82efa0d81408c526eddc1ea825, type: 3}
+  unicoon: {fileID: 8300000, guid: 7aae41708e537134aa2176c0c430055e, type: 3}
 --- !u!4 &528720032
 Transform:
   m_ObjectHideFlags: 0
@@ -471,7 +475,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
@@ -863,6 +867,11 @@ PrefabInstance:
       propertyPath: AS
       value: 
       objectReference: {fileID: 528720033}
+    - target: {fileID: 2749366706673034448, guid: 255c039fe20fd654bbf926412d56b1a3,
+        type: 3}
+      propertyPath: select2
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f7e2e7ba2201154282200bc772508e2, type: 3}
     - target: {fileID: 7934130531033319108, guid: 255c039fe20fd654bbf926412d56b1a3,
         type: 3}
       propertyPath: AS
@@ -873,6 +882,21 @@ PrefabInstance:
       propertyPath: button
       value: 
       objectReference: {fileID: 528720030}
+    - target: {fileID: 2749366704822516824, guid: 255c039fe20fd654bbf926412d56b1a3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749366704822516824, guid: 255c039fe20fd654bbf926412d56b1a3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749366704822516824, guid: 255c039fe20fd654bbf926412d56b1a3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 255c039fe20fd654bbf926412d56b1a3, type: 3}
 --- !u!114 &2749366705248008612 stripped

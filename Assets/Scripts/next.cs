@@ -72,11 +72,11 @@ public class next : MonoBehaviour
         Winnerhand[3] = Winnerhand4;
         Winnerhand[4] = Winnerhand5;
 
-        PointText_c1.text = Getcp(0) + "";
-        PointText_c2.text = Getcp(1) + "";
-        PointText_c3.text = Getcp(2) + "";
-        PointText_c4.text = Getcp(3) + "";
-        PointText_c5.text = Getcp(4) + "";
+        PointText_c1.text = 50 + "";
+        PointText_c2.text = 40 + "";
+        PointText_c3.text = 10 + "";
+        PointText_c4.text = 20 + "";
+        PointText_c5.text = 30 + "";
 
         //プレイヤーの出す手//
         phand1 = SumPoint.Getmyhand(1);
@@ -97,14 +97,14 @@ public class next : MonoBehaviour
         int PP2 = SumPoint.count2;
         int PP3 = SumPoint.count3;
         int PP4 = SumPoint.count4;
-        int PP5 = SumPoint.count5;
+        int PP5 = SumPoint.count5; 
 
         //CPUのポイント//
-        int CP1 = Getcp(0);
-        int CP2 = Getcp(1);
-        int CP3 = Getcp(2);
-        int CP4 = Getcp(3);
-        int CP5 = Getcp(4);
+        int CP1 = 50;
+        int CP2 = 40;
+        int CP3 = 10;
+        int CP4 = 20;
+        int CP5 = 30;
 
         int[] PP = new int[5] { PP1, PP2, PP3, PP4, PP5 }; //プレイヤーのポイント、倍率かかった後//
         int[] PPP = new int[5] { PP1, PP2, PP3, PP4, PP5 };　//プレイヤーのポイント、倍率かかる前//
@@ -112,45 +112,6 @@ public class next : MonoBehaviour
         string[] phand = new string[5] { phand1, phand2, phand3, phand4, phand5 };
         string[] chand = new string[5] { chand1, chand2, chand3, chand4, chand5 };
         int[] jankenstatus = new int[5] { jankenstatus1, jankenstatus2, jankenstatus3, jankenstatus4, jankenstatus5 };
-
-        for (int i = 0; i < 4; i++)
-        {
-            switch (colornum[i])
-            {
-                case 0:
-                    if (phand[i] == "Goo")
-                    {
-                        PP[i] = PP[i] * 2;
-                    }
-                    if (chand[i] == "Goo")
-                    {
-                        CP[i] = CP[i] * 2;
-                    }
-                    break;
-                case 1:
-                    if (phand[i] == "Choki")
-                    {
-                        PP[i] = PP[i] * 2;
-                    }
-                    if (chand[i] == "Choki")
-                    {
-                        CP[i] = CP[i] * 2;
-                    }
-                    break;
-                case 2:
-                    if (phand[i] == "Pa")
-                    {
-                        PP[i] = PP[i] * 2;
-                    }
-                    if (chand[i] == "Pa")
-                    {
-                        CP[i] = CP[i] * 2;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
 
         for (int n = 0; n <= 4; n++)
         {
@@ -208,6 +169,42 @@ public class next : MonoBehaviour
             else if (jankenstatus[n] == 3)
             {
                 CP[n] = CP[n] * 2;
+            }
+
+            switch (colornum[n])
+            {
+                case 0:
+                    if (phand[n] == "Goo")
+                    {
+                        PP[n] = PP[n] + 20;
+                    }
+                    if (chand[n] == "Goo")
+                    {
+                        CP[n] = CP[n] + 20;
+                    }
+                    break;
+                case 1:
+                    if (phand[n] == "Choki")
+                    {
+                        PP[n] = PP[n] + 20;
+                    }
+                    if (chand[n] == "Choki")
+                    {
+                        CP[n] = CP[n] + 20;
+                    }
+                    break;
+                case 2:
+                    if (phand[n] == "Pa")
+                    {
+                        PP[n] = PP[n] + 20;
+                    }
+                    if (chand[n] == "Pa")
+                    {
+                        CP[n] = CP[n] + 20;
+                    }
+                    break;
+                default:
+                    break;
             }
 
             if (PP[n] > CP[n])
@@ -297,7 +294,7 @@ public class next : MonoBehaviour
             }
         }
 
-        for(int n = 0; n < 4; n++)
+        for(int n = 0; n <= 4; n++)
         {
             panel[n].sprite = colorpanel[n];
         }
@@ -340,19 +337,19 @@ public class next : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    HandText_c1.text = hand[Random.Range(0, 3)];
+                    HandText_c1.text = "Goo";
                     return HandText_c1.text;
                 case 1:
-                    HandText_c2.text = hand[Random.Range(0, 3)];
+                    HandText_c2.text = "Pa";
                     return HandText_c2.text;
                 case 2:
-                    HandText_c3.text = hand[Random.Range(0, 3)];
+                    HandText_c3.text = "Choki";
                     return HandText_c3.text;
                 case 3:
-                    HandText_c4.text = hand[Random.Range(0, 3)];
+                    HandText_c4.text = "Pa";
                     return HandText_c4.text;
                 case 4:
-                    HandText_c5.text = hand[Random.Range(0, 3)];
+                    HandText_c5.text = "Pa";
                     return HandText_c5.text;
                 default:
                     return null;

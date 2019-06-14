@@ -51,13 +51,10 @@ public class Secondresult : MonoBehaviour
     string secondph2 = secondBattle.handtext2;
     string secondph3 = secondBattle.handtext3;
 
-    int cpuGoo = secondBattle.c_GooPoint;
-    int cpuChoki = secondBattle.c_ChokiPoint;
-    int cpuPa = secondBattle.c_PaPoint;
+    int cpuGoo = Resultscript.cGooPoint;
+    int cpuChoki = Resultscript.cChokiPoint;
+    int cpuPa = Resultscript.cPaPoint;
 
-    int secondcp1;
-    int secondcp2;
-    int secondcp3;
     string secondch1;
     string secondch2;
     string secondch3;
@@ -75,12 +72,15 @@ public class Secondresult : MonoBehaviour
     int[] SPP = new int[3];
     int[] SCP = new int[3];
 
-    public static int victorycount = 0;
-    public static int defeatcount = 0;
+    public static int victorycount;
+    public static int defeatcount;
 
     // Start is called before the first frame update
     void Start()
     {
+        victorycount = 0;
+        defeatcount = 0;
+
         Text[] Phand = new Text[3] { Phand1, Phand2, Phand3 };
         Text[] Chand = new Text[3] { Chand1, Chand2, Chand3 };
         Text[] Pafterpoint = new Text[3] { Pafterpoint1, Pafterpoint2, Pafterpoint3 };
@@ -111,9 +111,9 @@ public class Secondresult : MonoBehaviour
                 point[n] = tmp;
                 hand[n] = tmp2;
             }
-            secondcp1 = point[0];
-            secondcp2 = point[1];
-            secondcp3 = point[2];
+            Secondcp[0] = point[0];
+            Secondcp[1] = point[1];
+            Secondcp[2] = point[2];
             secondch1 = hand[0];
             secondch2 = hand[1];
             secondch3 = hand[2];
@@ -140,9 +140,9 @@ public class Secondresult : MonoBehaviour
                 point[n] = tmp;
                 hand2[n] = tmp2;
             }
-            secondcp1 = point[0];
-            secondcp2 = point[1];
-            secondcp3 = point[2];
+            Secondcp[0] = point[0];
+            Secondcp[1] = point[1];
+            Secondcp[2] = point[2];
             secondch1 = hand2[0];
             secondch2 = hand2[1];
             secondch3 = hand2[2];
@@ -169,9 +169,9 @@ public class Secondresult : MonoBehaviour
                 point[n] = tmp;
                 hand3[n] = tmp2;
             }
-            secondcp1 = point[0];
-            secondcp2 = point[1];
-            secondcp3 = point[2];
+            Secondcp[0] = point[0];
+            Secondcp[1] = point[1];
+            Secondcp[2] = point[2];
             secondch1 = hand3[0];
             secondch2 = hand3[1];
             secondch3 = hand3[2];
@@ -198,32 +198,28 @@ public class Secondresult : MonoBehaviour
                 point[n] = tmp;
                 hand4[n] = tmp2;
             }
-            secondcp1 = point[0];
-            secondcp2 = point[1];
-            secondcp3 = point[2];
+            Secondcp[0] = point[0];
+            Secondcp[1] = point[1];
+            Secondcp[2] = point[2];
             secondch1 = hand4[0];
             secondch2 = hand4[1];
             secondch3 = hand4[2];
         }
         else if ((cpuGoo > 0) && (cpuChoki == 0) && (cpuPa == 0))  //グーだけポイントあり//
         {
-            int gooA = 0;
-            int gooB = 0;
-            string randomhand = "";
-            int[] point = new int[3] { gooA, gooB, 0 };
+            string randomhand = hand[Random.Range(0, 3)];
+            int[] point = new int[3] { 0, 0, 0 };
             string[] hand5 = new string[3] { "Goo", "Goo", randomhand };
-
-            randomhand = hand[Random.Range(0, 3)];
 
             if (cpuGoo % 20 == 0)
             {
-                gooA = cpuGoo / 2;
-                gooB = cpuGoo / 2;
+                point[0] = cpuGoo / 2;
+                point[1] = cpuGoo / 2;
             }
             else if (cpuGoo % 20 == 10)
             {
-                gooA = (cpuGoo / 2) + 5;
-                gooB = (cpuGoo / 2) - 5;
+                point[0] = (cpuGoo / 2) + 5;
+                point[1] = (cpuGoo / 2) - 5;
             }
 
             //重複なしシャッフル//
@@ -241,32 +237,28 @@ public class Secondresult : MonoBehaviour
                 point[n] = tmp;
                 hand5[n] = tmp2;
             }
-            secondcp1 = point[0];
-            secondcp2 = point[1];
-            secondcp3 = point[2];
+            Secondcp[0] = point[0];
+            Secondcp[1] = point[1];
+            Secondcp[2] = point[2];
             secondch1 = hand5[0];
             secondch2 = hand5[1];
             secondch3 = hand5[2];
         }
         else if ((cpuGoo == 0) && (cpuChoki > 0) && (cpuPa == 0))  //チョキだけポイントあり//
         {
-            int chokiA = 0;
-            int chokiB = 0;
-            string randomhand = "";
-            int[] point = new int[3] { chokiA, chokiB, 0 };
+            string randomhand = hand[Random.Range(0, 3)];
+            int[] point = new int[3] { 0, 0, 0};
             string[] hand6 = new string[3] { "Choki", "Choki", randomhand };
-
-            randomhand = hand[Random.Range(0, 3)];
 
             if (cpuChoki % 20 == 0)
             {
-                chokiA = cpuChoki / 2;
-                chokiB = cpuChoki / 2;
+                point[0] = cpuChoki / 2;
+                point[1] = cpuChoki / 2;
             }
             else if (cpuChoki % 20 == 10)
             {
-                chokiA = (cpuChoki / 2) + 5;
-                chokiB = (cpuChoki / 2) - 5;
+                point[0] = (cpuChoki / 2) + 5;
+                point[1] = (cpuChoki / 2) - 5;
             }
 
             //重複なしシャッフル//
@@ -284,32 +276,28 @@ public class Secondresult : MonoBehaviour
                 point[n] = tmp;
                 hand6[n] = tmp2;
             }
-            secondcp1 = point[0];
-            secondcp2 = point[1];
-            secondcp3 = point[2];
+            Secondcp[0] = point[0];
+            Secondcp[1] = point[1];
+            Secondcp[2] = point[2];
             secondch1 = hand6[0];
             secondch2 = hand6[1];
             secondch3 = hand6[2];
         }
         else if ((cpuGoo == 0) && (cpuChoki == 0) && (cpuPa > 0))   //パーだけポイントあり//
         {
-            int paA = 0;
-            int paB = 0;
-            string randomhand = "";
-            int[] point = new int[3] { paA, paB, 0 };
+            string randomhand = hand[Random.Range(0, 3)];
+            int[] point = new int[3] { 0,0,0};
             string[] hand7 = new string[3] { "Pa", "Pa", randomhand };
-
-            randomhand = hand[Random.Range(0, 3)];
 
             if (cpuPa % 20 == 0)
             {
-                paA = cpuPa / 2;
-                paB = cpuPa / 2;
+                point[0] = cpuPa / 2;
+                point[1] = cpuPa / 2;
             }
             else if (cpuPa % 20 == 10)
             {
-                paA = (cpuPa / 2) + 5;
-                paB = (cpuPa / 2) - 5;
+                point[0] = (cpuPa / 2) + 5;
+                point[1] = (cpuPa / 2) - 5;
             }
 
             //重複なしシャッフル//
@@ -327,18 +315,18 @@ public class Secondresult : MonoBehaviour
                 point[n] = tmp;
                 hand7[n] = tmp2;
             }
-            secondcp1 = point[0];
-            secondcp2 = point[1];
-            secondcp3 = point[2];
+            Secondcp[0] = point[0];
+            Secondcp[1] = point[1];
+            Secondcp[2] = point[2];
             secondch1 = hand7[0];
             secondch2 = hand7[1];
             secondch3 = hand7[2];
         }
-        else if((cpuGoo==0)&&(cpuChoki==0)&&(cpuPa==0))       //何もなし//
+        else       //何もなし//
         {
-            secondcp1 = 0;
-            secondcp2 = 0;
-            secondcp3 = 0;
+            Secondcp[0] = 0;
+            Secondcp[1] = 0;
+            Secondcp[2] = 0;
             secondch1 = hand[Random.Range(0, 3)];
             secondch2 = hand[Random.Range(0, 3)];
             secondch3 = hand[Random.Range(0, 3)];
@@ -352,15 +340,11 @@ public class Secondresult : MonoBehaviour
         Secondph[1] = secondph2;
         Secondph[2] = secondph3;
 
-        Secondcp[0] = secondcp1;    
-        Secondcp[1] = secondcp2;
-        Secondcp[2] = secondcp3;
-
         Secondch[0] = secondch1;    
         Secondch[1] = secondch2;
         Secondch[2] = secondch3;
 
-        for (int n=0; n<=2; n++)
+        for (int n = 0; n <= 2; n++)
         {
             switch (Secondph[n])
             {
@@ -457,34 +441,34 @@ public class Secondresult : MonoBehaviour
                 case 0:
                     if (Secondph[n] == "Goo")
                     {
-                        SPP[n] = SPP[n] * 2;
+                        SPP[n] = SPP[n] + 20;
                     }
                     if (Secondch[n] == "Goo")
                     {
-                        SCP[n] = SCP[n] * 2;
+                        SCP[n] = SCP[n] + 20;
                     }
                     break;
                 case 1:
                     if (Secondph[n] == "Choki")
                     {
-                        SPP[n] = SPP[n] * 2;
+                        SPP[n] = SPP[n] + 20;
                     }
                     if (Secondch[n] == "Choki")
                     {
-                        SCP[n] = SCP[n] * 2;
+                        SCP[n] = SCP[n] + 20;
                     }
                     break;
                 case 2:
                     if (Secondph[n] == "Pa")
                     {
-                        SPP[n] = SPP[n] * 2;
+                        SPP[n] = SPP[n] + 20;
                     }
                     if (Secondch[n] == "Pa")
                     {
-                        SCP[n] = SCP[n] * 2;
+                        SCP[n] = SCP[n] + 20;
                     }
                     break;
-                default:
+                case 3:
                     break;
             }
 
@@ -552,10 +536,14 @@ public class Secondresult : MonoBehaviour
                 break;
         }
 
-        for(int n = 0; n < 2; n++)
+        for(int n = 0; n <= 2; n++)
         {
             panel[n].sprite = irodori[n];
         }
+
+        Debug.Log(Secondch[0]);
+        Debug.Log(Secondch[1]);
+        Debug.Log(Secondch[2]);
     }
 
     public void Go_nextscene()
@@ -595,22 +583,4 @@ public class Secondresult : MonoBehaviour
 
         Resultsum.text = victorycount + " - " + defeatcount;
     }
-
-   /* public void Showresult()
-    {
-        AS.PlayOneShot(select2);
-
-        if (result1.activeSelf==false)
-        {
-            result1.SetActive(true);
-            result2.SetActive(true);
-            result3.SetActive(true);
-        }
-        else if(result1.activeSelf==true)
-        {
-            result1.SetActive(false);
-            result2.SetActive(false);
-            result3.SetActive(false);
-        }
-    }*/
 }

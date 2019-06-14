@@ -37,13 +37,19 @@ public class SumPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        for(int n = 0; n < 4; n++)
+        colornum[0] = Random.Range(0, 5);
+        colornum[1] = Random.Range(0, 5);
+        colornum[2] = Random.Range(0, 5);
+        colornum[3] = Random.Range(0, 5);
+        colornum[4] = Random.Range(0, 5);
+
+        for (int n = 0; n <= 4; n++)
         {
-            colornum[n] = Random.Range(0, 5);
+           
             panelcolor[n].sprite = colorpanel[colornum[n]];
             color_panel[n] = panelcolor[n].sprite;
         }
+
 
         count1 = 10;
         count2 = 10;
@@ -80,7 +86,7 @@ public class SumPoint : MonoBehaviour
             Destroy(this.gameObject, 0.5f);
                 AS.PlayOneShot(select3);
                 SceneManager.LoadScene("ShowHands");    //シーン移動//
-        }
+            }
             else
             {
             AS.PlayOneShot(beep);

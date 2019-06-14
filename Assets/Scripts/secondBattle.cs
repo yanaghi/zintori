@@ -36,9 +36,9 @@ public class secondBattle : MonoBehaviour
     int p_GooPoint=Resultscript.pGooPoint;
     int p_ChokiPoint = Resultscript.pChokiPoint;
     int p_PaPoint = Resultscript.pPaPoint;
-    public static int c_GooPoint = Resultscript.cGooPoint;
-    public static int c_ChokiPoint = Resultscript.cChokiPoint;
-    public static int c_PaPoint = Resultscript.cPaPoint;
+    int c_GooPoint = Resultscript.cGooPoint;
+    int c_ChokiPoint = Resultscript.cChokiPoint;
+    int c_PaPoint = Resultscript.cPaPoint;
 
     int p_GooPoint0 = Resultscript.pGooPoint;
     int p_ChokiPoint0 = Resultscript.pChokiPoint;
@@ -70,12 +70,12 @@ public class secondBattle : MonoBehaviour
         PpointG.text = p_GooPoint + "p";
         PpointC.text = p_ChokiPoint + "p";
         PpointP.text = p_PaPoint + "p";
-        CpointG.text = c_GooPoint + "p";
-        CpointC.text = c_ChokiPoint + "p";
-        CpointP.text = c_PaPoint + "p";
+        CpointG.text = c_GooPoint0 + "p";
+        CpointC.text = c_ChokiPoint0 + "p";
+        CpointP.text = c_PaPoint0 + "p";
         Updatelabel();  
 
-        for(int n = 0; n < 2; n++)
+        for(int n = 0; n <= 2; n++)
         {
             colornum[n] = Random.Range(0, 4);
             panel[n].sprite = color_panel[colornum[n]];

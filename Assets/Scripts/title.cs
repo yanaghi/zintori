@@ -7,13 +7,15 @@ public class title : MonoBehaviour
     public AudioSource AS;
     public AudioClip select,effect1;
 
-    public GameObject manual;
+    public GameObject manual1;
+    public GameObject manual2;
+    public GameObject manual3;
     public GameObject credit;
 
     // Start is called before the first frame update
     void Start()
     {
-        manual.SetActive(false);
+        manual1.SetActive(false);
         credit.SetActive(false);
     }
 
@@ -25,8 +27,6 @@ public class title : MonoBehaviour
 
     public void Startbutton()
     {
-        DontDestroyOnLoad(this);
-        Destroy(this.gameObject, 0.5f);
         AS.PlayOneShot(effect1);
         FadeManager.Instance.LoadScene("1stSetting", 1.0f);
     }
@@ -34,7 +34,7 @@ public class title : MonoBehaviour
     public void Manualbutton()
     {
         AS.PlayOneShot(select);
-        manual.SetActive(true);
+        manual1.SetActive(true);
     }
 
     public void Creditbutton()
@@ -49,9 +49,19 @@ public class title : MonoBehaviour
         credit.SetActive(false);
     }
 
-    public void Manualback()
+    public void Manualback1()
     {
         AS.PlayOneShot(select);
-        manual.SetActive(false);
+        manual1.SetActive(false);
+    }
+    public void Manualback2()
+    {
+        AS.PlayOneShot(select);
+        manual2.SetActive(false);
+    }
+    public void Manualback3()
+    {
+        AS.PlayOneShot(select);
+        manual3.SetActive(false);
     }
 }

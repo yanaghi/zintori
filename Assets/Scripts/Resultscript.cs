@@ -34,6 +34,12 @@ public class Resultscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pGooPoint = 0;
+        pChokiPoint = 0;
+        pPaPoint = 0;
+        cGooPoint = 0;
+        cChokiPoint = 0;
+        cPaPoint = 0;
         int[] resultpoint = next.ResultPoint;
         int[] battlestatus = next.BattleStatus;
         string[] winnerhand = next.Winnerhand;
@@ -120,7 +126,7 @@ public class Resultscript : MonoBehaviour
             {
                 if (winnerhand[n] == "Goo")
                 {
-                    cGooPoint =cGooPoint + resultpoint[n];
+                    cGooPoint = cGooPoint + resultpoint[n];
                 }
                 else if (winnerhand[n] == "Choki")
                 {
@@ -140,7 +146,7 @@ public class Resultscript : MonoBehaviour
             CPUPaPoint.text = cPaPoint + "p";
         }
 
-        for(int n = 0; n < 4; n++)
+        for(int n = 0; n <= 4; n++)
         {
             panel[n].sprite = colorpanel[n];
         }
@@ -149,15 +155,7 @@ public class Resultscript : MonoBehaviour
 
     public void GoNext()
     {
-        DontDestroyOnLoad(this);
-        Destroy(this.gameObject, 0.5f);
         AS.PlayOneShot(select3);
-        FadeManager.Instance.LoadScene("2ndSetting", 1.0f); ;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        FadeManager.Instance.LoadScene("2ndSetting", 1.0f);
     }
 }
